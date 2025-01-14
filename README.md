@@ -64,7 +64,7 @@ Number of Highly Influential Scientific Assessments (HISA) reported to have been
 Agency resources for Information Quality Act and Peer Review reporting. URLs obtained by agencies from recent electronic submissions.  
 
 #### REQUESTOR_SUMMARY_TABLE_FYXX.csv
-Summary of requestors submitting RFCs by agency (one file for each fiscal year, e.g., requestor_summary_table_FY19.csv for FY 19). Data extracted from electronic submission (FY19-current).  Data were not contained in the Reports to Congress. 
+Summary of requestors submitting RFCs by agency (one file for each fiscal year, e.g., requestor_summary_table_FY19.csv for FY19). Data extracted from electronic submission (FY19-current).  Data were not contained in the Reports to Congress. 
 
 #### RFC_REQUESTOR_TYPES.csv
 Summary of requestors submitting RFCs by fiscal year (sum across all agencies using data noted in requestor summary tables).  
