@@ -1,0 +1,565 @@
+---
+title: "Information Quality Act of 2000"
+subtitle: "Reporting on Twenty Years of Agency Compliance Data (2003-2023)"
+author: "Office of Information and Regulatory Affairs, Office of Management and Budget <br>"
+date: "January, 2025"
+date-format: "MMMM, YYYY"
+
+format: 
+  html:
+    mainfont: Source Sans Pro
+    fontsize: 12pt  
+    fontcolor: "#032E41"
+    page-layout: full
+    embed-resources: true
+    keep-md: false
+  
+toc: true
+toc-location: left
+toc-depth: 4
+
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(tidyverse)
+library(gt)
+library(viridis)
+
+```
+
+
+```{r message = FALSE, warning = FALSE, echo=FALSE}
+rm(list = ls())# clear all variables
+
+#defining path for csv outfiles, and resetting working directory
+setwd("..")
+mypath<-getwd()
+readpath<-paste0(mypath, "/data/csvs/")
+setwd(paste0(mypath, "/code"))
+
+#import from all necessary CSV files
+RFCs_by_agency<-read.csv(paste0(readpath,"RFC_AGENCIES.csv"), check.names=FALSE)
+RFRs_by_agency<-read.csv(paste0(readpath,"RFR_AGENCIES.csv"), check.names=FALSE)
+peer_reviews_by_fiscal_year<-read.csv(paste0(readpath,"PEER_REVIEWS.csv"), check.names=FALSE)
+HISA_by_fiscal_year<-read.csv(paste0(readpath,"HISA.csv"), check.names=FALSE)
+RFC_resolutions<-read.csv(paste0(readpath,"RFC_FINAL_RESOLUTION.csv"), check.names=FALSE)
+PR_FY_plot<-read.csv(paste0(readpath,"PR_FY_PLOT.csv"), check.names=FALSE)
+HISA_FY_plot<-read.csv(paste0(readpath,"HISA_FY_PLOT.csv"), check.names=FALSE)
+agency_urls <- read.csv(paste0(readpath,"AGENCY_URLS.csv"), check.names=FALSE)
+RFC_requestors<-read.csv(paste0(readpath,"RFC_REQUESTOR_TYPES.csv"), check.names=FALSE)
+RFC_information_types<-read.csv(paste0(readpath,"RFC_INFORMATION_TYPES.csv"), check.names=FALSE)
+
+```
+
+
+
+## **Background**
+
+##### Our Nation relies on the flow of timely, objective, and credible statistical and scientific information to inform the decisions of governments, businesses, organizations, and individuals. This information forms the basis on which evidence-based policymaking is done in the Federal government. Evidence collected by agencies guides the development of regulations and policies for achieving economic growth and job creation while protecting public health, safety, privacy, the environment, and the nation. Transparency and evaluation of the information used by Federal agencies to develop regulations and rulemaking is an integral part of the regulatory review process, including the benefits and costs of proposed policies.
+
+
+
+##### The Information Quality Act (IQA) of 2000 <a href="https://www.govinfo.gov/content/pkg/PLAW-106publ554/pdf/PLAW-106publ554.pdf" target="_blank">(Section 515 of Public Law 106–554; H.R. 5658)</a>  directed the Office of Management and Budget (OMB) to issue government-wide guidelines that provide policy and procedural guidance to Federal agencies for ensuring and maximizing the quality of information disseminated by Federal agencies, including a process for requesting correction. These guidelines and related initiatives are described below:
+
+
+
+ > ***[Information Quality Guidelines (2002)](../docs/guidelines/iqa-guidelines-2002.pdf){target="_blank"}*** <br>
+The IQA Guidelines implement the statutory requirements of the IQA, and provide a framework for oversight of the quality of information disseminated by the Federal government.  OMB designed the guidelines to help agencies ensure and maximize the quality, utility, objectivity and integrity of the information that they disseminate (meaning to share with, or give access to, the public).
+>
+> ***[Peer Review Bulletin (2004)](../docs/guidelines/peer-review-bulletin-2005_m05-03.pdf){target="_blank"}*** <br>
+The Peer Review Bulletin (the Bulletin) establishes government-wide guidance aimed at enhancing the practice of peer review of government science documents. Peer review is an important procedure used by the scientific community to ensure  the quality of published information. Peer review can increase the quality and credibility of the scientific information generated across the Federal government.
+>
+> ***[OMB M-19-15: Improving Implementation of the Information Quality Act (2019)](../docs/guidelines/improving-iqa-implimentation-2019_m-19-15.pdf){target="_blank"}*** <br>
+OMB M-19-15 builds on, and does not replace, the OMB Information Quality Guidelines. It provided implementation updates in the context of innovations and subsequent policy in the information landscape as well as common questions that have arisen since the OMB Guidelines were issued.
+>
+> ***[Improving Implementation of the Information Quality Act: Frequently Asked Questions (FAQ)](../docs/guidelines/iqa-faqs-2023.pdf){target="_blank"}*** <br>
+The purpose of these FAQs is to answer questions that Federal agencies have often asked about how to apply OMB Guidelines and OMB M-19-15.
+
+
+
+
+##### Under these guidelines, all Federal agencies are required to provide an annual summary of status of: 1) requests for correction (RFCs) and requests for reconsideration (RFRs), and 2) peer reviews conducted consistent with the Bulletin.  More details regarding RFCs, RFRs, and peer reviews are contained below. 
+
+##### OMB summarizes and reports this information to Congress and the public. In previous years, reporting was done via the annual [Report to Congress on the Benefits and Costs of Federal Regulations and Unfunded Mandates](../docs/annual-reports){target="_blank"}. As an alternative, OIRA proposed in the  draft of the 2018/2019/2020 Report to disseminate this information through a publicly accessible website for improved transparency. In order to meet its obligations under the IQA and to support broader public dissemination of data, OMB is providing below a comprehensive summary of historical and contemporary data that the Office of Information and Regulatory Affairs (OIRA) has collected from Federal agencies over the last twenty years. Presented here are summaries of IQA data for fiscal year (FY) FY2003-FY2018 from the  Reports to Congress, as well as information from more recent data collections for FY2019-FY2023. This summary below fulfills OMB’s obligations under the IQA for FY2019-FY2024.  
+
+
+
+## **The Request for Correction Process**
+
+##### The ***Request for Correction (RFC)*** process is the administrative mechanism under the IQA allowing the public to seek and obtain correction of information maintained and disseminated by Federal agencies.  The submitted request itself is referred to as an RFC. This process also provides an opportunity to request reconsideration of the agency’s initial decision on an RFC.  This is referred to as a ***Request for Reconsideration (RFR)***. 
+
+##### The RFC process is intended to provide a mechanism to correct errors or address whether the disseminated product does not meet OMB’s or the agency’s information quality guidelines. The process is not intended to duplicate or interfere with other agency processes that, through public participation, already allow individuals to raise questions about whether any information is incorrect or otherwise does not comply with OMB’s or the agency’s guidelines.  The process is designed to challenge technical information that underlies policy, not to debate the policy itself.
+
+##### Under the IQA, agencies are required to report periodically to OMB the number and nature of RFCs received by their agency, and how such requests were handled.  These reported data were previously included in the annual [Report to Congress on the Benefits and Costs of Federal Regulations and Unfunded Mandates](../docs/annual-reports){target="_blank"}.  Historical data of RFCs extracted from those reports, as well as data from a more recent data call, are presented here. 
+
+
+
+#### **Figure 1: Number of Requests for Correction (RFCs) and Reconsideration (RFRs) by fiscal year** 
+```{r message = FALSE, warning = FALSE, echo=FALSE, fig.dim = c(8,6)}
+
+#creating a color palette variable
+MyColorPalette <- function(n) viridis(n, option = "mako")
+Stackedbar_palette <- c( "#BCE3F8", "#032E41")
+
+#get sum of RFCs by FY (without first column, which is the FY label)
+RFC_FY_totals<-colSums(RFCs_by_agency[-1])
+
+# removing the last row (which is the total count for each agency)
+RFC_FY_totals<-RFC_FY_totals[-length(RFC_FY_totals)]
+
+#convert to dataframe
+RFC_FY_totals <- data.frame (
+  Fiscal_Year = names(RFC_FY_totals),
+  Total = unname(RFC_FY_totals))
+
+#remove "FY" from label for more condensed plotting (display as '03, '04, etc)
+RFC_FY_totals$Fiscal_Year<-gsub("FY","'",as.character(RFC_FY_totals$Fiscal_Year))
+
+# perform same steps for RFRs 
+RFR_FY_totals <- colSums(RFRs_by_agency[-1])
+RFR_FY_totals<-RFR_FY_totals[-length(RFR_FY_totals)]
+RFR_FY_totals<- data.frame (
+  Fiscal_Year = names(RFR_FY_totals),
+  Total = unname(RFR_FY_totals))
+RFR_FY_totals$Fiscal_Year<-gsub("FY","'",as.character(RFR_FY_totals$Fiscal_Year))
+
+#renaming the Total column in each dataframe so they can be joined into one for a stacked barchart
+RFR_FY_totals <- RFR_FY_totals %>%
+  rename(
+    RFRs = Total
+  )
+RFC_FY_totals <- RFC_FY_totals %>%
+  rename(
+    RFCs = Total
+  )
+
+#joining/pivoting and formatting for a stacked bar chart
+RFCs_and_RFRs_FY <-full_join(RFR_FY_totals, RFC_FY_totals, by ="Fiscal_Year") 
+#save this as a stand-alone table (corresponds to the plot)
+write.csv(RFCs_and_RFRs_FY, file = paste0(readpath, "FIGURE-1-TABLE.csv"), row.names = FALSE)
+
+RFCs_and_RFRs_FY_longer <- RFCs_and_RFRs_FY %>% pivot_longer(
+  cols = c(RFRs, RFCs), 
+               names_to="Category",
+               values_to = "Total"
+)
+
+#re-ordering the category for legend/visualization (for consistency)
+RFCs_and_RFRs_FY_longer$Category<-factor(RFCs_and_RFRs_FY_longer$Category, levels = c('RFRs','RFCs'))
+
+# Plotting the stacked bar chart
+ggplot(RFCs_and_RFRs_FY_longer, aes(x= Fiscal_Year, y = Total, fill = Category )) + 
+  geom_bar(position='stack', stat = "identity") +
+  scale_fill_manual(values = setNames(Stackedbar_palette, unique(RFCs_and_RFRs_FY_longer$Category))) +
+  labs(
+    title = " ", 
+    x = "Fiscal Year", 
+    y = "Total Requests"
+  ) + 
+    theme_minimal() +
+  theme(plot.margin=margin(0,0,0,0))#+
+   #annotate("text", x = 2.7, y = 55, label = "*See caption")
+
+
+```
+
+######  **Figure 1: Number of Requests for Correction (RFCs) and Reconsideration (RFRs) by fiscal year** <br> Only those requests determined by OMB to have been initiated by the Information Quality Act are included. Data for FY2003-FY2005 were collected when the Information Quality Act was still relatively new and agency procedures for classifying correction requests were evolving. In the 2005 Report to Congress, OMB differentiated requests reported by agencies that were initiated by the IQA from requests that were no different in substance from the simple web page fixes or technical corrections that agencies have always received. As noted in the [2005 Report](../docs/annual-reports/final_2005_cb_report.pdf){target="_blank"} and [support documentation](/README.md){target="_blank"}, FY2003 and FY2004 totals still include some requests that would typically not be considered IQA-relevant in subsequent years. A tabular representation of these data is available [here](../data/csvs/FIGURE-1-TABLE.csv){target="_blank"}.
+<br>
+
+#### **Figure 2: Number of Requests for Correction (RFCs) and Reconsideration (RFRs) by agency (FY2003-FY2023)**
+```{r message = FALSE, warning = FALSE, echo=FALSE, fig.dim = c(8,6)}
+#Create the bar charts for requests for correction by agency using ggplot
+#Filter agencies that have received any RFCs or RFRs
+
+
+RFCs_by_agency_barchart <- RFCs_by_agency %>%
+  select(Agency, Total) %>%
+  filter(Total > 0)
+
+RFRs_by_agency_barchart <- RFRs_by_agency  %>%
+  select(Agency, Total) %>%
+  filter(Total > 0)
+#note: agencies can only get RFRs if they have gotten RFCs; this RFR filtering step is technically not necessary
+
+
+#renaming the total column to better label data after joining
+RFCs_by_agency_barchart <- RFCs_by_agency_barchart %>%
+  rename(
+    RFCs = Total
+  )
+
+RFRs_by_agency_barchart <- RFRs_by_agency_barchart %>%
+  rename(
+    RFRs = Total
+  )
+
+#restructuring  for the stacked chart using full join (since there are less RFRs than RFCs)
+
+RFCs_and_RFRS <-full_join(RFRs_by_agency_barchart, RFCs_by_agency_barchart, by ="Agency")
+
+#filling auto-populated NAs from mismatched rows with 0
+#(agencies with RFCs and no RFRs return NA after joining due to earlier filtering step)
+#there are also some raw excel data returning as NA (empty cells with shading or blank non-numeric)
+RFCs_and_RFRS <-RFCs_and_RFRS %>% replace(is.na(.),0)
+
+#save this as a stand-alone table (corresponds to the plot)
+write.csv(RFCs_and_RFRS, file = paste0(readpath, "FIGURE-2-TABLE.csv"), row.names = FALSE)
+
+RFCs_and_RFRS_longer<- RFCs_and_RFRS%>%
+  pivot_longer(cols = c(RFRs, RFCs), 
+               names_to="Category",
+               values_to = "Value")
+RFCs_and_RFRS_longer$Category<-factor(RFCs_and_RFRS_longer$Category, levels = c('RFRs','RFCs'))
+ggplot(RFCs_and_RFRS_longer, aes(x= reorder(Agency, Value), y = Value, fill = Category )) + 
+  geom_bar(position ='stack',stat = "identity") +
+  labs(
+    title = "", 
+    x = "Agency", 
+    y = "Number of requests"
+  )+
+  coord_flip() +
+  theme(plot.margin=margin(0,0,0,0))+
+ scale_fill_manual(values = setNames(Stackedbar_palette, unique(RFCs_and_RFRs_FY_longer$Category)))
+```
+######  **Figure 2: Number of Requests for Correction (RFCs) and Reconsideration (RFRs) by agency (FY2003-FY2023)** <br> Data presented as a total count of all requests.  Only those requests determined by OMB to have been initiated by the Information Quality Act are included.  <a href="https://www.reginfo.gov/public/jsp/Utilities/AcronymName.myjsp" target="_blank">Click here for the current agency acronyms used in this report</a>. A tabular representation of these data is available [here](../data/csvs/FIGURE-2-TABLE.csv){target="_blank"}.
+<br>
+
+#### **Figure 3: Percent of Requests for Correction (RFCs) received by agency (FY2003-FY2023)**
+```{r message = FALSE, warning = FALSE, echo=FALSE}
+
+RFC_by_agency_piechart <- RFCs_by_agency
+RFC_by_agency_piechart$Percent <- RFC_by_agency_piechart$Total/sum(RFCs_by_agency$Total) * 100
+
+RFC_by_agency_piechart_filtered <- RFC_by_agency_piechart %>%
+  select(Agency, Percent) %>%
+  filter(Percent > 0)
+
+#save this as a stand-alone table (corresponds to the plot)
+write.csv(RFC_by_agency_piechart_filtered, file = paste0(readpath, "FIGURE-3-TABLE.csv"), row.names = FALSE)
+
+
+labels_rfc <- paste(RFC_by_agency_piechart_filtered$Agency, ' (',RFC_by_agency_piechart_filtered$Percent, '%)', sep = '')
+
+ggplot(RFC_by_agency_piechart_filtered, aes(x= reorder(Agency, Percent), y = Percent, fill = Agency )) + 
+  geom_bar(stat = "identity", fill = "#032E41") +
+  labs(
+    title = " ", 
+    x = "Agency", 
+    y = "Percent (%)"
+  )+  
+  coord_flip()  +
+  theme(plot.margin=margin(0,0,0,0))+
+  theme(legend.position = "none") 
+```
+###### **Figure 3: Percent of Requests for Correction (RFCs) received by agency (FY2003-FY2023)** <br> Data presented as a percent of all requests across all agencies. Only those requests determined by OMB to have been initiated by the Information Quality Act are included. Requests for Reconsideration (RFRs) are not included in this figure, as all RFCs become RFRs if a requestor appeals a decision.  Large regulatory agencies have a high proportion of the correction requests. A tabular representation of these data is available [here](../data/csvs/FIGURE-3-TABLE.csv){target="_blank"}.
+
+
+<br>
+
+
+#### **Figure 4: Final Resolutions of Requests for Correction (FY2003-FY2023)**
+```{r, fig.dim = c(7,5), message = FALSE, warning = FALSE, echo=FALSE}
+# RFC_resolutions
+
+totals_resol<-colSums(RFC_resolutions[-1])
+RFC_resolutions_pie<-data.frame(totals_resol)
+
+RFC_resolutions_pie<-rownames_to_column(RFC_resolutions_pie, "Resolution")
+RFC_resolutions_pie$Percent<- round(RFC_resolutions_pie$totals_resol/sum(RFC_resolutions_pie$totals_resol) * 100, 1)
+
+#full pie chart (all agencies, just agencies and percents)
+RFC_resolutions_pie_final<-select(RFC_resolutions_pie, Resolution, Percent)
+
+#save this as a stand-alone table (corresponds to the plot)
+write.csv(RFC_resolutions_pie_final, file = paste0(readpath, "FIGURE-4-TABLE.csv"), row.names = FALSE)
+
+
+#This changes the whitespace/margins (bottom, left, top, right); fig.dem changes the (width, height) of the figure
+#manual adjusting necessary for final visualizations
+par(mar= c(0,1.5,0,0))
+
+labels_resolutions <- paste(RFC_resolutions_pie_final$Resolution, ' (',RFC_resolutions_pie_final$Percent, '%)', sep = '')
+
+pie (RFC_resolutions_pie_final$Percent, labels = labels_resolutions, col=MyColorPalette(length(RFC_resolutions_pie_final$Resolution)))
+```
+###### **Figure 4: Final Resolutions of Requests for Correction (FY2003-FY2023)** <br> Data presented as a percent of all requests across all agencies. Only those requests determined by OMB to have been initiated by the Information Quality Act are included. The category "Other" encapsulates a variety of different mechanisms that agencies use to re-direct a requestor to other processes that may exist outside of the IQA.  Despite being resolved outside of the IQA, these were still considered to be valid IQA requests.  In counting how requests were ultimately resolved, tallies were based on the resolution *after* any Requests for Reconsideration (RFR) were resolved, if applicable. There may be a small uncertainty due to RFRs that go unresolved between fiscal years, as some information underlying these requests are not contained in the Reports to Congress. See the [2005 Report](../docs/annual-reports/final_2005_cb_report.pdf){target="_blank"}  and [support documentation](/README.md){target="_blank"} for additional details.  A tabular representation of these data is available [here](../data/csvs/FIGURE-4-TABLE.csv){target="_blank"}.
+
+<br>
+
+
+#### **Figure 5: Organizations requesting corrections (FY2019-FY2023)**
+```{r,  fig.dim = c(8, 5), message = FALSE, warning = FALSE, echo=FALSE}
+
+#remove first column (fiscal year labels--- not needed for these charts)
+RFC_requestors_table<-RFC_requestors[-1] 
+
+Total<-colSums(RFC_requestors_table)
+RFC_requestors_pie<-data.frame(Total)
+RFC_requestors_pie<-rownames_to_column(RFC_requestors_pie, "Requestor")
+RFC_requestors_pie$Percent<- round(RFC_requestors_pie$Total/sum(RFC_requestors_pie$Total) * 100, 1)
+
+RFC_requestors_pie<- RFC_requestors_pie%>%
+    select(Requestor, Percent) %>%
+    filter(Percent > 0)
+
+#full pie chart (all fiscal years, only requestors and percents)
+RFC_requestors_pie_final<-select(RFC_requestors_pie, Requestor, Percent)
+
+#save this as a stand-alone table (corresponds to the plot)
+write.csv(RFC_requestors_pie_final, file = paste0(readpath, "FIGURE-5-TABLE.csv"), row.names = FALSE)
+
+labels_requestors <- paste(RFC_requestors_pie_final$Requestor, ' (',RFC_requestors_pie_final$Percent, '%)', sep = '')
+par(mar= c(0,8,0,8))
+pie (RFC_requestors_pie_final$Percent, labels = labels_requestors, col=MyColorPalette(length(RFC_requestors_pie_final$Requestor)))
+```
+###### **Figure 5: Organizations requesting corrections (FY2019-FY2023)** <br> Data presented as a percent of all requests across all agencies.  These data were only available beginning in FY2019.  Requestors generally fell into the basic categories noted above (in addition to professional societies or organizations, which is not listed because they made no such requests during this time).  The category "Others" includes unaffiliated individuals.  A tabular representation of these data is available [here](../data/csvs/FIGURE-5-TABLE.csv){target="_blank"}.
+
+
+
+> As noted earlier, historical data may contain inaccuracies due to variations in workflows and recordkeeping between agencies over time. In addition to workflow differences prior to FY2005, data from FY2019-FY2023 were collected during a single data call using a modernized collection mode with an online survey instrument. Some data presented here were only available beginning in FY2019, because these data were not contained in the previous Reports to Congress.
+
+
+<br>
+
+
+#### **Figure 6: Types of information subjected to Requests for Correction (FY2019-FY2023)**
+```{r message = FALSE, warning = FALSE, echo=FALSE, fig.dim = c(8,6)}
+
+#remove FY labels (FY not needed for these charts)
+RFC_information_table<-RFC_information_types[-1] 
+
+Total<-colSums(RFC_information_table)
+
+RFC_information_pie<-data.frame(Total)
+RFC_information_pie<-rownames_to_column(RFC_information_pie, "Information")
+RFC_information_pie$Percent<- RFC_information_pie$Total/sum(RFC_information_pie$Total) * 100
+
+#save this as a stand-alone table (corresponds to the plot)
+write.csv(RFC_information_pie, file = paste0(readpath, "FIGURE-6-TABLE.csv"), row.names = FALSE)
+
+
+# Creating the bar chart 
+ggplot(RFC_information_pie, aes(x= reorder(Information, Percent) , y = Percent, fill = Information)) + 
+  geom_bar(stat = "identity", fill = "#032E41") +
+  labs(
+    title = " ", 
+  y="Percent (%)", 
+  x="Information Type")+
+  coord_flip() +
+  theme_minimal() +
+  theme(legend.position = "none") 
+
+```
+
+
+######  **Figure 6: Types of information subjected to Requests for Correction (FY2019-FY2023)** <br> Data presented as a percent of all requests across all agencies.  These data were only available beginning in FY2019. Requests for Reconsideration (RFRs) are not included in this figure, as all RFCs become RFRs if a requestor appeals a decision.  A wide variety of information can be disseminated by Federal agencies. Web content can include scientific, medical, or other technical data and fact sheets that are published by Federal agencies. Information underlying proposed or final rules can include economic assessments or other information that an agency disseminates  to support a rule. Agency risk assessments are sometimes used to support rules, while others are stand-alone and are used to support other types of decisionmaking.  Print material can include brochures or other information provided to the public using print media.  Under the [2002 IQA Guidelines](../docs/guidelines/iqa-guidelines-2002.pdf){target="_blank"}, press releases, archival records, public filings, subpoenas or adjudicative processes are *not* covered by the RFC process. A tabular representation of these data is available [here](../data/csvs/FIGURE-6-TABLE.csv){target="_blank"}.  
+
+
+
+> Every effort was made to maximize the generalizability and comparability of data collected under different collection modes. However, limitations in these efforts should be noted. Due to changes in both the data collection mode and administrative needs for collecting multi-year data, the comparability of single-year collections done in the past may not be appropriate and caution is recommended.  There is also some loss of data fidelity when extracting from previous Reports to Congress due to incomplete information presented in those past reports. As such, OIRA cautions readers against drawing any conclusions about trends or year-to-year comparisons, in general.
+>
+> Additional details about the methodology used in compiling this report, including information on data extraction data quality can be found in the [support documentation](/README.md){target="_blank"}.
+
+ 
+
+
+## **Bulletin for Peer Review**
+
+##### Peer review is one of the important procedures used to ensure that the quality of published information meets the standards of the scientific and technical community. It is a form of deliberation involving an exchange of professional judgments about the appropriateness of methods and the strength of the author’s inferences. Peer review involves the review of a draft product for quality by specialists in the field who were not involved in producing the draft. 
+
+##### As per OMB’s [Peer Review Bulletin](../docs/guidelines/peer-review-bulletin-2005_m05-03.pdf){target="_blank"}, each agency shall provide to OMB a summary of the peer reviews conducted by the agency during the fiscal year. Peer reviews subject to the Bulletin are those of information classified as ***Influential Scientific Information (ISI)***, and the subset ***Highly Influential Scientific Assessments (HISA)***.  
+
+
+> The term ***influential scientific information*** means scientific information the agency reasonably can determine will have or does have a clear and substantial impact on important public policies or private sector decisions. 
+> 
+> ***Highly influential scientific assessments*** are a subset of influential scientific information. A scientific assessment is an evaluation of a body of scientific or technical knowledge that typically synthesizes multiple factual inputs, data, models, assumptions, and/or applies best professional judgment to bridge uncertainties in the available information. A scientific assessment is considered "highly influential" if the agency or the OIRA Administrator determines that the dissemination could have a potential impact of more than $500 million in any one year on either the public or private sector or that the dissemination is novel, controversial, or precedent-setting, or has significant interagency interest. The Peer Review Bulletin applies stricter minimum requirements for the peer review of this information. 
+
+
+#### **Figure 7: Number of peer reviews completed by fiscal year**
+```{r message = FALSE, warning = FALSE, echo=FALSE, fig.dim = c(8,6)}
+
+# remove "FY" from label for more condensed plotting (replace with '03, '04, etc)
+HISA_FY_plot$FY<-gsub("FY","'",as.character(HISA_FY_plot$FY))
+PR_FY_plot$FY<-gsub("FY","'",as.character(PR_FY_plot$FY))
+
+
+#Creating a stacked barplot, first by joining data frames and pivoting
+HISAs_and_PRs <-left_join(HISA_FY_plot, PR_FY_plot, by ="FY")
+
+#Peer review data were total peer reviews (ISI + the subset HISA)
+#Subtract the HISAs from the PRs column so we have ISI and HISA separated
+HISAs_and_PRs <- HISAs_and_PRs %>%
+  mutate(ISI = total_FY_PR - total_FY_HISA)
+
+#remove the "total" column to avoid  confusion
+HISAs_and_PRs$total_FY_PR<-NULL;
+#rename as simply ISI and HISA
+HISAs_and_PRs<-rename(HISAs_and_PRs, HISA=total_FY_HISA); 
+HISAs_and_PRs_longer<- HISAs_and_PRs%>%
+  pivot_longer(cols = c(HISA, ISI), 
+               names_to="Category",
+               values_to = "Value")
+
+#save this as a stand-alone table (corresponds to the plot)
+write.csv(HISAs_and_PRs, file = paste0(readpath, "FIGURE-7-TABLE.csv"), row.names = FALSE)
+
+
+ggplot(HISAs_and_PRs_longer, aes(x= FY, y = Value, fill = Category )) + 
+  geom_bar(stat = "identity") +
+  labs(
+    title = " ", 
+    x = "Fiscal Year", 
+    y = "Number of peer reviews"
+  ) +
+  scale_fill_manual(values = setNames(Stackedbar_palette, unique(HISAs_and_PRs_longer$Category)))
+
+
+```
+
+
+######  **Figure 7: Number of peer reviews completed by fiscal year** <br> Data presented as a total count over all agencies of peer reviews subject to the Peer Review Bulletin (Influential Scientific Information and Highly Influential Scientific Assessments). A tabular representation of these data is available [here](../data/csvs/FIGURE-7-TABLE.csv){target="_blank"}. 
+
+<br>
+
+
+
+#### **Figure 8: Number of peer reviews completed  by agency (FY2003-FY2023)**
+```{r message = FALSE, warning = FALSE, echo=FALSE, fig.dim = c(8,6)}
+
+
+#peer_reviews_by_fiscal_year
+#HISA_by_fiscal_year
+#are all the same size/order/structure as each other (mathematical operations can be performed across both)
+
+PR_by_agency_complete <- peer_reviews_by_fiscal_year
+#these are total peer reviews (ISI+HISA); remove FY label for computations
+PR_by_agency_complete$PR<-rowSums(peer_reviews_by_fiscal_year[-1])
+
+HISA_by_agency_complete <- HISA_by_fiscal_year
+#these are the total HISA
+HISA_by_agency_complete$HISA<-rowSums(HISA_by_fiscal_year[-1])
+
+  
+ISI_and_HISA_by_agency<-left_join(HISA_by_agency_complete, PR_by_agency_complete, by ="Agency")
+ISI_and_HISA_by_agency<-select(ISI_and_HISA_by_agency, Agency, PR, HISA)
+
+#calculate ISI by subtracting HISA from total peer reviews
+ISI_and_HISA_by_agency<-ISI_and_HISA_by_agency%>%
+  mutate(ISI=PR-HISA)
+
+#remove agencies where total PR=0; remove the unnecessary PR column (of total peer reviews)
+ISI_and_HISA_by_agency<-ISI_and_HISA_by_agency%>%
+    filter(PR > 0)
+
+#remove total PR from the data structure
+ISI_and_HISA_by_agency$PR<-NULL
+
+#save this as a stand-alone table (corresponds to the plot)
+write.csv(ISI_and_HISA_by_agency, file = paste0(readpath, "FIGURE-8-TABLE.csv"), row.names = FALSE)
+
+ISI_and_HISA_by_agency_longer<- ISI_and_HISA_by_agency%>%
+  pivot_longer(cols = c(HISA, ISI), 
+               names_to="Category",
+               values_to = "Value")
+
+ggplot(ISI_and_HISA_by_agency_longer, aes(x= reorder(Agency, Value), y = Value, fill = Category )) + 
+  geom_bar(stat = "identity") +
+  labs(
+    title = " ", 
+    x = "Agency", 
+    y = "Number of peer reviews completed"
+  )+  
+  scale_fill_manual(values = setNames(Stackedbar_palette, unique(ISI_and_HISA_by_agency_longer$Category)))+
+  coord_flip()  
+
+
+```
+
+###### **Figure 8: Number of peer reviews completed  by agency (FY2003-FY2023)** <br> Data presented as a total count of all peer reviews subject to the Peer Review Bulletin. A tabular representation of these data is available [here](../data/csvs/FIGURE-8-TABLE.csv){target="_blank"}.
+
+
+<br>
+
+
+#### **Figure 9: Percent of peer reviews completed by agency (FY2003-FY2023)**
+```{r message = FALSE, warning = FALSE, echo=FALSE}
+#peer_reviews_by_fiscal_year
+#HISA_by_fiscal_year
+
+#each agency total
+PR_piechart<-peer_reviews_by_fiscal_year
+PR_piechart$Agency_Total <- rowSums(peer_reviews_by_fiscal_year[,-1])
+PR_piechart$Percent<- PR_piechart$Agency_Total/sum(PR_piechart$Agency_Total) * 100
+
+#full pie chart (all agencies, just agencies and percents)
+PR_piechart_complete<-select(PR_piechart, Agency, Percent)
+
+PR_agency_piechart_filtered <- PR_piechart_complete %>%
+    select(Agency, Percent) %>%
+    filter(Percent > 0)
+
+#save this as a stand-alone table (corresponds to the plot)
+write.csv(PR_agency_piechart_filtered, file = paste0(readpath, "FIGURE-9-TABLE.csv"), row.names = FALSE)
+
+labels_PR_pie <- paste(PR_agency_piechart_filtered$Agency, '(',PR_agency_piechart_filtered$Percent, '%)', sep = '')
+
+ggplot(PR_agency_piechart_filtered, aes(x= reorder(Agency, Percent), y = Percent, fill = Agency )) + 
+  geom_bar(stat = "identity", fill = "#032E41") +
+  labs(
+    title = " ", 
+    x = "Agency", 
+    y = "Percent (%)"
+  )+  
+  coord_flip()  +
+  theme(legend.position = "none") 
+#note: using bar chart and not pie chart for this figure
+
+```
+
+
+######  **Figure 9: Percent of peer reviews completed by agency (FY2003-FY2023)** <br> Data presented as a percent of  all peer reviews subject to the Peer Review Bulletin (ISI+HISA). A tabular representation of these data is available [here](../data/csvs/FIGURE-9-TABLE.csv){target="_blank"}.
+
+<br>
+
+> Peer review data provided by agencies to OMB include additional information that are not yet presented here. However, those data were still extracted from the  Reports to Congress and obtained during the FY2019-FY2023 data call. 
+>
+> All source data, including additional data not represented here, are publicly accessible [here](../data/csvs/){target="_blank"}.
+
+
+
+
+##   **Agency Information Quality Act Websites**
+
+##### Agencies are required by OMB to maintain websites for RFC correspondence, and an agenda of peer review plans (or disclaimer stating that the agency does not currently produce or sponsor influential scientific information subject to the Peer Review Bulletin). The table below provides the URLs to the agency websites based on the most up-to-date information available. OIRA continues to work with agencies to improve transparency and accessibility of IQA data, and will update this table as needed. 
+
+
+
+```{r message = FALSE, warning = FALSE, echo=FALSE}
+hyperlinks <- agency_urls
+#mutating so that all the urls are in the same column and hyperlinked
+one_column_urls <-hyperlinks %>%
+  mutate(
+    `IQA URL 1` = sprintf('<p><a href = "%s"target="_blank">%s</a>', `IQA URL 1`, `IQA URL 1`), 
+    `IQA URL 2` = sprintf('<p><a href = "%s"target="_blank">%s</a>', `IQA URL 2`, `IQA URL 2`),
+    `IQA URL 3` = sprintf('<p><a href = "%s"target="_blank">%s</a>', `IQA URL 3`, `IQA URL 3`)
+  ) %>%
+  unite("URLs", `IQA URL 1`:`IQA URL 2`:`IQA URL 3`, sep = "  ", remove = TRUE) %>%
+  mutate(URLs = map(URLs, gt::html))
+
+one_column_urls <-one_column_urls|>
+  arrange(Agency)
+  
+one_column_urls |>
+  gt()|>
+  tab_header(
+    title = " Table 1: Agency Information Quality Act Websites"
+  )
+
+```
+
+
+> <a href="https://www.reginfo.gov/public/jsp/Utilities/AcronymName.myjsp" target="_blank">Click here for the current agency acronyms used in this report</a> .  Please note that some acronyms have changed over the reporting period.  For example, the Federal Housing Finance Agency (FHFA) became the successor to the Federal Housing Finance Board (FHFB) after 2008, but for convenience FHFA is used for all reporting years. 
