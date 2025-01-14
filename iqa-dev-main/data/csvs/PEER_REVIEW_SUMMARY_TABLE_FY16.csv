@@ -1,0 +1,10 @@
+"Agency","Agency (abbrv.)","Total Peer Reviews Completed","Reviews of HISA","Waivers, Deferrals, or Exemptions","Potential Reviewer Conflicts","Agency1","Agency2","Agency3","Agency4","...11","...12"
+"Department of Agriculture","USDA",55,0,"None","None","Economic Research Service","Forest Service",,,,
+"Department of Commerce","DOC",13,0,"4","None","National Oceanic and Atmospheric Administration",,,,,
+"Department of Health and Human Services","HHS",26,4,"None","1","Centers for Disease Control and Prevention","Food and Drug
+Administration","National Toxicology Program
+Environmental Health Sciences",,,
+"Department of the Interior","DOI",44,1,"9 (Waivers)","None","Fish and Wildlife Service","Bureau of Reclamation","Bureau of Safety and
+Environmental Enforcement","Geological Survey",,
+"Environmental Protection Agency","EPA",10,2,"None","None",,,,,,
+"Federal Communication Commission","FCC",1,0,"None","None",,,,,,
