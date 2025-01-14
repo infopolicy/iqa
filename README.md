@@ -52,7 +52,7 @@ Number of all requests for correction (RFCs) reported to have been received by e
 Number of all requests for reconsideration (RFRs, or "appeals") reported to have been received by each agency (defined as “Agency”), by fiscal year (defined as FY03, FY04, etc). Data extracted from OIRA Reports to Congress (for FY03-FY18), and from electronic submission (FY19-current). 
 
 #### RFC_FINAL_RESOLUTION.csv
-Numbers of RFCs resolved in each fiscal year (defined as “Year”), and how those RFCs were resolved (after being appealed, if applicable).  Resolutions are defined as “Correction”, “Partial Correction”, “No Correction”, and “Other”.  Data extracted from OIRA Reports to Congress (for FY03-FY18), and from electronic submission (FY19-current).  Please see earlier note about accounting of RFRs (or “appeals”) that go unresolved between fiscal years, as well as introduction of the “Partial Correction” category for FY2006 data. 
+Numbers of RFCs resolved in each fiscal year (defined as “Year”), and how those RFCs were resolved (after being appealed, if applicable).  Resolutions are defined as “Correction”, “Partial Correction”, “No Correction”, and “Other”.  Data extracted from OIRA Reports to Congress (for FY03-FY18), and from electronic submission (FY19-current).  Please see earlier note about accounting of [RFRs (or “appeals”) that go unresolved between fiscal years](#requests-for-reconsideration-rfrs-or-appeals-that-go-unresolved-between-fiscal-years), as well as introduction of the [“Partial Correction” category for FY2006 data](#partial-and-full-correction-reporting). 
 
 #### PR_FY_PLOT.csv
 Total number of peer reviews of Influential Scientific Information (ISI) and the subset Highly Influential Scientific Assessments (HISA) reported to have been produced or sponsored by the agencies, that completed peer review in each fiscal year. These are the sums over all agencies (using data presented in PEER_REVIEWS.csv)
@@ -88,10 +88,10 @@ Final resolutions (if applicable) of requests for corrections and reconsideratio
 For each fiscal year, OIRA Reports to Congress (for FY03-FY18) provided tables of all RFCs and RFRs that were reported as unresolved from prior fiscal years, and how those were ultimately resolved (correction/no correction/partial correction/handled by other processes/pending).  Those data are presented here.  These are ultimately merged with data from rfcs_resolutions_source and rfr_agencies_source to determine a running count of how RFCs are ultimately resolved. For the data collection FY19-FY23, this granular level of detail (by fiscal year) was not collected due to the multi-year nature of the call.  OMB was only able to ask about the nature of pending RFCs/RFRs at the end of FY23. 
 
 #### rfc_agencies_source.xlsx
-Table of RFCs recieved by each agency, by fiscal year.  Data extracted from OIRA Reports to Congress (for FY03-FY18), and from electronic submission (FY19-current). Please see earlier notes (under [Data prior to Fiscal year 2006](### Data Prior to Fiscal Year 2006) regarding adjustments to the totals for earlier years. 
+Table of RFCs recieved by each agency, by fiscal year.  Data extracted from OIRA Reports to Congress (for FY03-FY18), and from electronic submission (FY19-current). Please see earlier notes (under **[Data prior to Fiscal year 2006](#data-prior-to-fiscal-year-2006)** regarding adjustments to the totals for earlier years. 
 
 #### rfr_agencies_source.xlsx
-Table of RFRs recieved by each agency, by fiscal year.  Data extracted from OIRA Reports to Congress (for FY03-FY18), and from electronic submission (FY19-current). Please see earlier notes (under **Data prior to Fiscal year 2006**) regarding adjustments to the totals for earlier years. 
+Table of RFRs recieved by each agency, by fiscal year.  Data extracted from OIRA Reports to Congress (for FY03-FY18), and from electronic submission (FY19-current). Please see earlier notes (under **[Data prior to Fiscal year 2006](#data-prior-to-fiscal-year-2006)**) regarding adjustments to the totals for earlier years. 
 
 #### rfc_information_types_source.xlsx
 Summary of the types of information challenged in RFCs by agency (one tab for each fiscal year).  Data from electronic submission (FY19-current).
