@@ -57,10 +57,10 @@ The following section describes the structure and contents of categories of file
 Total number of peer reviews of Influential Scientific Information (ISI) and the subset Highly Influential Scientific Assessments (HISA) reported to have been produced or sponsored by the agencies (indicated as “Agency”), that completed peer review in each fiscal year (indicated as FY03, FY04, etc). Data extracted from OIRA Reports to Congress (for FY02003 to FY-2018), and from electronic submission (FY-2019 to present).
 
 ## HISA.csv
-Number of Highly Influential Scientific Assessments (HISA) reported to have been produced or sponsored by the agencies (defined as “Agency”), that completed peer review in each fiscal year (indicated as FY03, FY04, etc). Data extracted from OIRA Reports to Congress (for FY-2003 to FY-2018), and from electronic submission (FY2019 to present).
+Number of Highly Influential Scientific Assessments (HISA) reported to have been produced or sponsored by the agencies (defined as “Agency”), that completed peer review in each fiscal year (indicated as FY03, FY04, etc). Data extracted from OIRA Reports to Congress (for FY-2003 to FY-2018), and from electronic submission (FY-2019 to present).
 
 ## PEER_REVIEW_SUMMARY_TABLE_FYXX.csv
-All summary in formation from Peer Review data extracted from OIRA Reports to Congress (for FY03-FY18), and from electronic submission (FY2019 to current).  Contains information on numbers of peer reviews, waivers/deferrals/exemptions, and potential peer reviewer conflicts by each agency ( “Agency”).  This also contains lists of agencies or offices within larger departments performing most or all of the peer reviews (defined as Agency1, Agency2, etc).   Agency names may contain formatting and acronym inconsistencies (including punctuations which can inhibit some data importation).  Additional aggregation and formatting will be performed at a later date.  Also note that there were inter-departmental and year-to-year variations in how agency-under-department data were reported, and so users are cautioned against drawing any conclusions about trends regarding agencies under larger departments (e.g., FDA under HHS or FWS under DOI).  
+All summary in formation from Peer Review data extracted from OIRA Reports to Congress (for FY-2003-FY-2018), and from electronic submission (FY-2019 to current).  Contains information on numbers of peer reviews, waivers/deferrals/exemptions, and potential peer reviewer conflicts by each agency ( “Agency”).  This also contains lists of agencies or offices within larger departments performing most or all of the peer reviews (defined as Agency1, Agency2, etc).   Agency names may contain formatting and acronym inconsistencies (including punctuations which can inhibit some data importation).  Additional aggregation and formatting will be performed at a later date.  Also note that there were inter-departmental and year-to-year variations in how agency-under-department data were reported, and so users are cautioned against drawing any conclusions about trends regarding agencies under larger departments (e.g., FDA under HHS or FWS under DOI).  
 
 ## RFC_AGENCIES.csv
 Number of all requests for correction (RFCs) reported to have been received by each  agency (defined as “Agency), by fiscal year (indicated as FY03, FY04, etc). Data extracted from OIRA Reports to Congress (for FY-2003 to FY-2018), and from electronic submission (FY19-current).
@@ -81,13 +81,13 @@ Number of Highly Influential Scientific Assessments (HISA) reported to have been
 Agency resources for Information Quality Act and Peer Review reporting. URLs obtained by agencies from recent electronic submissions.  
 
 ## REQUESTOR_SUMMARY_TABLE_FYXX.csv
-Summary of requestors submitting RFCs by agency (one file for each fiscal year, e.g., requestor_summary_table_FY19.csv for FY19). Data extracted from electronic submission (FY19-current).  Data were not contained in the Reports to Congress. 
+Summary of requestors submitting RFCs by agency (one file for each fiscal year, e.g., requestor_summary_table_FY19.csv for FY-2019). Data extracted from electronic submission (FY-2019 to present).  Data were not contained in the Reports to Congress. 
 
 ## RFC_REQUESTOR_TYPES.csv
 Summary of requestors submitting RFCs by fiscal year (sum across all agencies using data noted in requestor summary tables).  
 
 ## INFORMATION_TYPE_SUMMARY_TABLE_FYXX.csv
-Summary of the types of information challenged in RFCs by agency (one file for each fiscal year, e.g., information_type_summary_table_FY19.csv for FY 19). Data extracted from electronic submission (FY19-current).  Data were not contained in the Reports to Congress. 
+Summary of the types of information challenged in RFCs by agency (one file for each fiscal year, e.g., information_type_summary_table_FY19.csv for FY-2019). Data extracted from electronic submission (FY-2019 to present).  Data were not contained in the Reports to Congress. 
 
 ## RFC_INFORMATION_TYPES.csv
 Summary of the types of information challenged in RFCs by fiscal year (sum across all agencies using data noted in information summary tables).
@@ -96,7 +96,7 @@ Summary of the types of information challenged in RFCs by fiscal year (sum acros
 Table of agency IQA URLs, collected from data calls and manual screening of department websites.  These links will continue to be updated. 
 
 ## peer_review_source.xlsx
-Tables of peer review summaries.  Data extracted from OIRA Reports to Congress (for FY2003 to FY-2018), and from electronic submission (FY-2019 to present).  One tab for each fiscal year.  Note: formatting differences between fiscal years for agencies within large departments are still unresolved between FY18/FY19+ data.  Some columns contain mathematical operations to make consistent for data extraction.  
+Tables of peer review summaries.  Data extracted from OIRA Reports to Congress (for FY-2003 to FY-2018), and from electronic submission (FY-2019 to present).  One tab for each fiscal year.  Note: formatting differences between fiscal years for agencies within large departments are still unresolved between FY18/FY19+ data.  Some columns contain mathematical operations to make consistent for data extraction.  
 
 ## rfcs_resolutions_source.xlsx
 Final resolutions (if applicable) of requests for corrections and reconsiderations resolved within each fiscal year. Resolutions are correction/no correction/partial correction/handled by other processes/pending.   Data extracted from OIRA Reports to Congress (for FY-2003 to FY-2018), and from electronic submission (FY-2019 to present).  In counting how requests are ultimately resolved, OMB extracted data from graphical flowcharts and tallied data based on the final conclusive resolution (after appeals, if applicable).  For example, if an initial determination was “no correction”, and the requestor appealed and the agency later granted a “partial correction”, this was counted only as a “partial correction” since the aim is determining how requests are ultimately resolved.  If an initial agency determination was “partial correction” and the requestor appealed, and the agency denied the appeal, this would also count as a “partial correction”.
@@ -105,7 +105,7 @@ Final resolutions (if applicable) of requests for corrections and reconsideratio
 For each fiscal year, OIRA Reports to Congress (for FY-2003 to FY-2018) provided tables of all RFCs and RFRs that were reported as unresolved from prior fiscal years, and how those were ultimately resolved (correction/no correction/partial correction/handled by other processes/pending).  Those data are presented here.  These are ultimately merged with data from rfcs_resolutions_source and rfr_agencies_source to determine a running count of how RFCs are ultimately resolved. For the data collection FY-2019 to FY-2023, this granular level of detail (by fiscal year) was not collected due to the multi-year nature of the call.  OMB was only able to ask about the nature of pending RFCs/RFRs at the end of FY-2023. 
 
 ## rfc_agencies_source.xlsx
-Table of RFCs recieved by each agency, by fiscal year.  Data extracted from OIRA Reports to Congress (for FY2003 to FY-2018), and from electronic submission (FY-2019 to FY-2023). Please see earlier notes (under [Data and Reports Prior to Fiscal Year 2007](#Data-and-Reports-Prior-to-Fiscal-Year-2007)) regarding adjustments to the totals for earlier years. 
+Table of RFCs recieved by each agency, by fiscal year.  Data extracted from OIRA Reports to Congress (for FY-2003 to FY-2018), and from electronic submission (FY-2019 to FY-2023). Please see earlier notes (under [Data and Reports Prior to Fiscal Year 2007](#Data-and-Reports-Prior-to-Fiscal-Year-2007)) regarding adjustments to the totals for earlier years. 
 
 ## rfr_agencies_source.xlsx
 Table of RFRs recieved by each agency, by fiscal year.  Data extracted from OIRA Reports to Congress (for FY-2003 to FY-2018), and from electronic submission (FY-2019 to FY-2023). Please see earlier notes (under [Data and Reports Prior to Fiscal Year 2007](#Data-and-Reports-Prior-to-Fiscal-Year-2007)) regarding adjustments to the totals for earlier years. 
@@ -114,7 +114,7 @@ Table of RFRs recieved by each agency, by fiscal year.  Data extracted from OIRA
 Summary of the types of information challenged in RFCs by agency (one tab for each fiscal year).  Data from electronic submission (FY-2019 to present).
 
 ## rfc_requestors_source.xlsx
-Summary of requestors submitting RFCs by agency (one tab for each fiscal year).  Data from electronic submission (FY2019 to present).
+Summary of requestors submitting RFCs by agency (one tab for each fiscal year).  Data from electronic submission (FY-2019 to present).
 
 # Contact
 For questions or suggestions regarding the data or analysis in this repository, please email <MBX.OMB.InformationQuality@OMB.eop.gov>. For technical improvements to the repository, please use github issues and pull requests as appropriate.  
