@@ -21,46 +21,45 @@
     <h1>Directory Listing</h1>
     <ul id="file-list"></ul>
 
-    <script>
-        const repo = "infopolicy/iqa"; // Replace with your repo
-        const branch = "main"; // Change if needed
-        const folder = "code/"; // Change to your directory
+   <script>
+const pagesBaseUrl = "https://infopolicy.github.io/iqa/";
 
-        async function fetchFiles(path, parentElement) {
-            const url = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`;
-            const response = await fetch(url);
-            const files = await response.json();
+async function fetchFiles(path, parentElement) {
+    const url = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`;
+    const response = await fetch(url);
+    const files = await response.json();
 
-            const ul = document.createElement("ul");
-            parentElement.appendChild(ul);
+    const ul = document.createElement("ul");
+    parentElement.appendChild(ul);
 
-            files.forEach(file => {
-                const li = document.createElement("li");
-                
-                if (file.type === "dir") {
-                    const folderSpan = document.createElement("span");
-                    folderSpan.textContent = `📁 ${file.name}`;
-                    folderSpan.classList.add("folder");
-                    folderSpan.onclick = () => {
-                        const sublist = li.querySelector("ul");
-                        if (sublist) {
-                            sublist.classList.toggle("hidden");
-                        } else {
-                            fetchFiles(file.path, li);
-                        }
-                    };
-                    li.appendChild(folderSpan);
+    files.forEach(file => {
+        const li = document.createElement("li");
+
+        if (file.type === "dir") {
+            const folderSpan = document.createElement("span");
+            folderSpan.textContent = `📁 ${file.name}`;
+            folderSpan.classList.add("folder");
+            folderSpan.onclick = () => {
+                const sublist = li.querySelector("ul");
+                if (sublist) {
+                    sublist.classList.toggle("hidden");
                 } else {
-                    const a = document.createElement("a");
-                    a.href = file.download_url;
-                    a.textContent = `📄 ${file.name}`;
-                    li.appendChild(a);
+                    fetchFiles(file.path, li);
                 }
-                ul.appendChild(li);
-            });
+            };
+            li.appendChild(folderSpan);
+        } else {
+            const a = document.createElement("a");
+            a.href = `${pagesBaseUrl}${file.path}`;
+            a.textContent = `📄 ${file.name}`;
+            li.appendChild(a);
         }
+        ul.appendChild(li);
+    });
+}
 
-        fetchFiles(folder, document.getElementById("file-list"));
-    </script>
+    fetchFiles(folder, document.getElementById("file-list"));
+
+</script>
 </body>
 </html>
