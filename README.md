@@ -117,4 +117,4 @@ Summary of the types of information challenged in RFCs by agency (one tab for ea
 Summary of requestors submitting RFCs by agency (one tab for each fiscal year).  Data from electronic submission (FY-2019 to present).
 
 # Contact
-For questions or suggestions regarding the data or analysis in this repository, please email <MBX.OMB.InformationQuality@OMB.eop.gov>. For technical improvements to the repository, please use github issues and pull requests as appropriate.  
+For questions or suggestions regarding the data or analysis in this repository, please email <MBX.OMB.InformationQuality@omb.eop.gov>. For technical improvements to the repository, please use github issues and pull requests as appropriate.  
