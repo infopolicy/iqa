@@ -16,12 +16,12 @@ There are four subdirectories in the repository.
 * [docs/](docs/) -  a reference archive of past IQA reports and guidelines 
 
 ## Code
-The analytic code in [/code/](code/)  that compiles the reports is done in R via knitr and has the following package dependencies: knitr, dplyr, ggplot2, tidyverse, gt, and viridis. 
+The analytic code in [code/](code/)  that compiles the reports is done in R via knitr and has the following package dependencies: knitr, dplyr, ggplot2, tidyverse, gt, and viridis. 
 
 All source code files are saved as "qmd" files and can be sourced into R as a batch process or interactively. 
 
 ## Build and Deployment
-The resulting report is output as an html file in [/code/](code/). This is deployed as a github pages static page through a standard deployment workflow with github actions. The current deployment routine is located [here](https://github.com/infopolicy/iqa/actions/runs/12691834619).
+The resulting report is output as an html file in [code/](code/). This is deployed as a github pages static page through a standard deployment workflow with github actions. The current deployment routine is located [here](https://github.com/infopolicy/iqa/actions/runs/12691834619).
 
 # Data Quality Summaries
 Data on Federal agencies' Information Quality Act activities have been collected by OMB since 2003. In general, the data collected by OMB include information about requests for correct, requests for reconsideration, and peer-review activities conducted under the Information Quality Act.  A Request for Correction (RFC) is the original challenge or complaint initiated under the IQA.  A Request for Reconsideration (RFR) is the appeal of the agency's initial decision on the RFC.  As a result, some summary statistics in this report only count on the basis of the original submitted RFCs, since including RFRs would be a double-count of a single request. Peer reviews are internal or external reviews of agency information intended for public dissemination. As IQA activities, guidelines, and processes have changed over the years, the IQA data has various levels of quality and quality control issues. 
