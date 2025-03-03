@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directory Listing</title>
+    <style>
+        ul {
+            list-style-type: none;
+        }
+        .folder {
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Directory Listing</h1>
+    <ul id="file-list"></ul>
+
+    <script>
+        const repo = "infopolicy/iqa"; // Replace with your repo
+        const branch = "main"; // Change if needed
+        const folder = "docs/"; // Change to your directory
+
+        async function fetchFiles(path, parentElement) {
+            const url = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`;
+            const response = await fetch(url);
+            const files = await response.json();
+
+            const ul = document.createElement("ul");
+            parentElement.appendChild(ul);
+
+            files.forEach(file => {
+                const li = document.createElement("li");
+                
+                if (file.type === "dir") {
+                    const folderSpan = document.createElement("span");
+                    folderSpan.textContent = `📁 ${file.name}`;
+                    folderSpan.classList.add("folder");
+                    folderSpan.onclick = () => {
+                        const sublist = li.querySelector("ul");
+                        if (sublist) {
+                            sublist.classList.toggle("hidden");
+                        } else {
+                            fetchFiles(file.path, li);
+                        }
+                    };
+                    li.appendChild(folderSpan);
+                } else {
+                    const a = document.createElement("a");
+                    a.href = file.download_url;
+                    a.textContent = `📄 ${file.name}`;
+                    li.appendChild(a);
+                }
+                ul.appendChild(li);
+            });
+        }
+
+        fetchFiles(folder, document.getElementById("file-list"));
+    </script>
+</body>
+</html>
