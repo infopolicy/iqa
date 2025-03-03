@@ -51,7 +51,7 @@ Data were not collected on an annual basis between 2019 and 2022. As a result, a
 Because OIRA did not collect specific details of RFCs and RFRs received and resolved, full data quality audits could not be performed.  For example, OIRA would typically correct errors related to how agencies categorized the type of information corrected or the organizations requesting correction.  For the FY-2019 to FY-2023 data call, OIRA occasionally evaluated the submitted data against RFC/RFR correspondence posted online and worked with agencies whenever discrepancies were noted. This was not done on a systematic basis.
 
 # Detailed Descriptions of Data Files
-The following section describes the structure and contents of categories of files located in [/data/](/data/).
+The following section describes the structure and contents of categories of files located in [data/](data/).
 
 ## PEER_REVIEWS.csv
 Total number of peer reviews of Influential Scientific Information (ISI) and the subset Highly Influential Scientific Assessments (HISA) reported to have been produced or sponsored by the agencies (indicated as “Agency”), that completed peer review in each fiscal year (indicated as FY03, FY04, etc). Data extracted from OIRA Reports to Congress (for FY02003 to FY-2018), and from electronic submission (FY-2019 to present).
