@@ -1,0 +1,12 @@
+"Agency","Agency (abbrv.)","Reviews of ISI","Reviews of HISA","Total Peer Reviews Completed","Waivers, Deferrals, or Exemptions","Potential Reviewer Conflicts","Agency1","Agency2","Agency3","Agency4","Agency5","Agency6","Agency7","Agency8","Agency9","Agency10"
+"Consumer Products Safety Commission","CPSC",,,,,,,,,,,,,,,
+"Veterans Administration","VA",,,,,,,,,,,,,,,
+"Federal Communication Commission","FCC",,,,,,,,,,,,,,,
+"Department of Commerce","DOC",1,,1,,,"NOAA",,,,,,,,,
+"Department of Agriculture","USDA",2,,2,,2,"APHIS",,,,,,,,,
+"Department of State","STATE",,,,,,,,,,,,,,,
+"Consumer Financial Protection Bureau","CFPB",,,,,,,,,,,,,,,
+"Environmental Protection Agency","EPA",9,,9,,,"OCSPP","ORD",,,,,,,,
+"Department of Energy","DOE",1,,1,,,"Grid Deployment Office",,,,,,,,,
+"Department of the Interior","DOI",194,3,197,30,,"FWS","USGS","BSEE","Reclamation","BOEM","BLM","OSMRE","BIA","BIE","BFTA"
+"Department of Health and Human Services","HHS",16,,16,,,"CDC","FDA","NIH",,,,,,,
