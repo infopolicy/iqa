@@ -173,15 +173,17 @@ ggplot(RFCs_and_RFRs_FY_longer, aes(x= Fiscal_Year, y = Total, fill = Category )
 
 ```{r message = FALSE, warning = FALSE, echo=FALSE}
 
-#placeholder: tabular representation of data (may need to re-format FY back, edit column names)
-#RFCs_and_RFRs_FY |>
-#  gt()|>
-#  tab_header(
-#    title = " Table x: Number of Requests for Correction (RFCs) and Reconsideration (RFRs) by fiscal year"
-#  )
-
-
-
+#tabular representation of figure data
+#re-formatting fiscal year format and names
+tab1<-RFCs_and_RFRs_FY;
+tab1$Fiscal_Year<-gsub("'","20",as.character(tab1$Fiscal_Year))
+tab1<-tab1 %>%
+  rename(    "Fiscal Year" = Fiscal_Year   )
+tab1 |>
+  gt()|>
+  tab_header(
+    title = " Table 1: Number of Requests for Correction (RFCs) and Reconsideration (RFRs) by Fiscal Year"
+  )
 
 ```
 
@@ -244,6 +246,26 @@ ggplot(RFCs_and_RFRS_longer, aes(x= reorder(Agency, Value), y = Value, fill = Ca
 ######  **Figure 2: Number of Requests for Correction (RFCs) and Reconsideration (RFRs) by agency (FY2003-FY2024)** <br> Data presented as a total count of all requests.  Only those requests determined by OMB to have been initiated by the Information Quality Act are included.  <a href="https://www.reginfo.gov/public/jsp/Utilities/AcronymName.myjsp" target="_blank">Click here for the current agency acronyms used in this report</a>. A tabular representation of these data is available [here](../data/csvs/FIGURE-2-TABLE.csv){target="_blank"}.
 <br>
 
+
+
+```{r message = FALSE, warning = FALSE, echo=FALSE}
+
+#tabular representation of figure data
+#re-ordering rfcs to be first, and sorting by number of RFCs
+
+tab2<-select(RFCs_and_RFRS,Agency, RFCs, RFRs)
+
+tab2 |>
+  arrange(desc(RFCs)) |>
+  gt()|>
+  tab_header(
+    title = " Table 2: Number of Requests for Correction (RFCs) and Reconsideration (RFRs) by agency (FY2003-FY2024)"
+  )
+
+
+```
+
+
 #### **Figure 3: Percent of Requests for Correction (RFCs) received by agency (FY2003-FY2024)**
 ```{r message = FALSE, warning = FALSE, echo=FALSE}
 
@@ -277,6 +299,26 @@ ggplot(RFC_by_agency_piechart_filtered, aes(x= reorder(Agency, Percent), y = Per
 <br>
 
 
+```{r message = FALSE, warning = FALSE, echo=FALSE}
+
+#tabular representation of figure data
+#re-ordering rfcs to be first, and sorting by number of RFCs
+
+tab3<-RFC_by_agency_piechart_filtered
+tab3$Percent<- round(tab3$Percent, 1)
+tab3 |>
+  arrange(desc(Percent)) |>
+  gt()|>
+  tab_header(
+    title = " Table 3: Percent of Requests for Correction (RFCs) received by agency (FY2003-FY2024)"
+  )
+
+
+```
+
+
+
+
 #### **Figure 4: Final Resolutions of Requests for Correction (FY2003-FY2024)**
 ```{r, fig.dim = c(7,5), message = FALSE, warning = FALSE, echo=FALSE}
 # RFC_resolutions
@@ -307,6 +349,23 @@ pie (RFC_resolutions_pie_final$Percent, labels = labels_resolutions, col=MyColor
 <br>
 
 
+```{r message = FALSE, warning = FALSE, echo=FALSE}
+
+#tabular representation of figure data
+
+tab4<-RFC_resolutions_pie_final
+
+tab4 |>
+  arrange(desc(Percent)) |>
+  gt()|>
+  tab_header(
+    title = " Table 4: Final Resolutions of Requests for Correction (FY2003-FY2024)"
+  )
+
+
+```
+
+
 #### **Figure 5: Organizations requesting corrections (FY2019-FY2024)**
 ```{r,  fig.dim = c(8, 5), message = FALSE, warning = FALSE, echo=FALSE}
 
@@ -335,6 +394,19 @@ pie (RFC_requestors_pie_final$Percent, labels = labels_requestors, col=MyColorPa
 ###### **Figure 5: Organizations requesting corrections (FY2019-FY2024)** <br> Data presented as a percent of all requests across all agencies.  These data were only available beginning in FY2019.  Requestors generally fell into the basic categories noted above (in addition to professional societies or organizations, which is not listed because they made no such requests during this time).  The category "Others" includes unaffiliated individuals.  A tabular representation of these data is available [here](../data/csvs/FIGURE-5-TABLE.csv){target="_blank"}.
 
 
+```{r message = FALSE, warning = FALSE, echo=FALSE}
+
+#tabular representation of figure data
+
+tab5<-RFC_requestors_pie_final
+tab5 |>
+  arrange(desc(Percent)) |>
+  gt()|>
+  tab_header(
+    title = " Table 5: Organizations requesting corrections (FY2019-FY2024)"
+  )
+
+```
 
 > As noted earlier, historical data may contain inaccuracies due to variations in workflows and recordkeeping between agencies over time. In addition to workflow differences prior to FY2005, data from FY2019-FY2023 were collected during a single data call using a modernized collection mode with an online survey instrument. Data collected beginning FY2024 continued using the new survey instrument, and resumed data calls on an annual basis. Some data presented here were only available beginning in FY2019, because these data were not contained in the previous Reports to Congress.
 
@@ -374,7 +446,21 @@ ggplot(RFC_information_pie, aes(x= reorder(Information, Percent) , y = Percent, 
 
 ######  **Figure 6: Types of information subjected to Requests for Correction (FY2019-FY2024)** <br> Data presented as a percent of all requests across all agencies.  These data were only available beginning in FY2019. Requests for Reconsideration (RFRs) are not included in this figure, as all RFCs become RFRs if a requestor appeals a decision.  A wide variety of information can be disseminated by Federal agencies. Web content can include scientific, medical, or other technical data and fact sheets that are published by Federal agencies. Information underlying proposed or final rules can include economic assessments or other information that an agency disseminates  to support a rule. Agency risk assessments are sometimes used to support rules, while others are stand-alone and are used to support other types of decisionmaking.  Print material can include brochures or other information provided to the public using print media.  Under the [2002 IQA Guidelines](../docs/guidelines/iqa-guidelines-2002.pdf){target="_blank"}, press releases, archival records, public filings, subpoenas or adjudicative processes are *not* covered by the RFC process. A tabular representation of these data is available [here](../data/csvs/FIGURE-6-TABLE.csv){target="_blank"}.  
 
+```{r message = FALSE, warning = FALSE, echo=FALSE}
 
+#tabular representation of figure data
+
+tab6<-select(RFC_information_pie, Information, Percent)
+tab6$Percent<-round(tab6$Percent, 1)
+
+tab6 |>
+  arrange(desc(Percent)) |>
+  gt()|>
+  tab_header(
+    title = " Table 6: Types of information subjected to Requests for Correction (FY2019-FY2024)"
+  )
+
+```
 
 > Every effort was made to maximize the generalizability and comparability of data collected under different collection modes. However, limitations in these efforts should be noted. Due to changes in both the data collection mode and administrative needs for collecting multi-year data, the comparability of single-year collections done in the past may not be appropriate and caution is recommended.  There is also some loss of data fidelity when extracting from previous Reports to Congress due to incomplete information presented in those past reports. As such, OIRA cautions readers against drawing any conclusions about trends or year-to-year comparisons, in general.
 >
@@ -442,6 +528,29 @@ ggplot(HISAs_and_PRs_longer, aes(x= FY, y = Value, fill = Category )) +
 <br>
 
 
+```{r message = FALSE, warning = FALSE, echo=FALSE}
+
+#tabular representation of figure data
+
+
+
+tab7<-select(HISAs_and_PRs, FY, ISI, HISA)
+tab7$FY<-gsub("'","20",as.character(tab7$FY))
+
+tab7<-tab7 %>%
+  rename("Fiscal Year" = FY)
+
+
+tab7 |>
+  gt()|>
+  tab_header(
+    title = " Table 7: Number of peer reviews completed by fiscal year: Influential Scientific Information (ISI) and Highly Influential Scientific Assessments (HISA)"
+  )
+
+```
+
+
+
 
 #### **Figure 8: Number of peer reviews completed  by agency (FY2003-FY2024)**
 ```{r message = FALSE, warning = FALSE, echo=FALSE, fig.dim = c(8,6)}
@@ -501,6 +610,25 @@ ggplot(ISI_and_HISA_by_agency_longer, aes(x= reorder(Agency, Value), y = Value, 
 <br>
 
 
+```{r message = FALSE, warning = FALSE, echo=FALSE}
+
+#tabular representation of figure data
+
+
+
+tab8<-select(ISI_and_HISA_by_agency, Agency, ISI, HISA)
+
+
+
+tab8 |>
+  arrange(desc(ISI)) |>
+  gt()|>
+  tab_header(
+    title = "Table 8: Number of peer reviews completed  by agency: Influential Scientific Information (ISI) and Highly Influential Scientific Assessments (HISA) "
+  )
+
+```
+
 #### **Figure 9: Percent of peer reviews completed by agency (FY2003-FY2024)**
 ```{r message = FALSE, warning = FALSE, echo=FALSE}
 #peer_reviews_by_fiscal_year
@@ -541,6 +669,25 @@ ggplot(PR_agency_piechart_filtered, aes(x= reorder(Agency, Percent), y = Percent
 
 <br>
 
+
+
+```{r message = FALSE, warning = FALSE, echo=FALSE}
+
+#tabular representation of figure data
+
+tab9<-PR_agency_piechart_filtered
+tab9$Percent<-round(tab9$Percent, 1)
+
+tab9 |>
+  arrange(desc(Percent)) |>
+  gt()|>
+  tab_header(
+    title = " Table 9: Percent of peer reviews completed by agency (FY2003-FY2024)"
+  )
+
+```
+
+
 > Peer review data provided by agencies to OMB include additional information that are not yet presented here. However, those data were still extracted from the  Reports to Congress and obtained during the post-FY2019 data calls. 
 >
 > All source data, including additional data not represented here, are publicly accessible [here](../data/csvs/){target="_blank"}.
@@ -572,7 +719,7 @@ one_column_urls <-one_column_urls|>
 one_column_urls |>
   gt()|>
   tab_header(
-    title = " Table 1: Agency Information Quality Act Websites"
+    title = " Table 10: Agency Information Quality Act Websites"
   )
 
 ```
