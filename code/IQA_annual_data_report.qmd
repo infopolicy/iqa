@@ -165,10 +165,26 @@ ggplot(RFCs_and_RFRs_FY_longer, aes(x= Fiscal_Year, y = Total, fill = Category )
    #annotate("text", x = 2.7, y = 55, label = "*See caption")
 
 
+
 ```
 
 ######  **Figure 1: Number of Requests for Correction (RFCs) and Reconsideration (RFRs) by fiscal year** <br> Only those requests determined by OMB to have been initiated by the Information Quality Act are included. Data for FY2003-FY2005 were collected when the Information Quality Act was still relatively new and agency procedures for classifying correction requests were evolving. In the 2005 Report to Congress, OMB differentiated requests reported by agencies that were initiated by the IQA from requests that were no different in substance from the simple web page fixes or technical corrections that agencies have always received. As noted in the [2005 Report](../docs/annual-reports/final_2005_cb_report.pdf){target="_blank"} and <a href="https://infopolicy.github.io/iqa/" target="_blank">support documentation</a>, FY2003 and FY2004 totals still include some requests that would typically not be considered IQA-relevant in subsequent years. A tabular representation of these data is available [here](../data/csvs/FIGURE-1-TABLE.csv){target="_blank"}.
 <br>
+
+```{r message = FALSE, warning = FALSE, echo=FALSE}
+
+#placeholder: tabular representation of data (may need to re-format FY back, edit column names)
+#RFCs_and_RFRs_FY |>
+#  gt()|>
+#  tab_header(
+#    title = " Table x: Number of Requests for Correction (RFCs) and Reconsideration (RFRs) by fiscal year"
+#  )
+
+
+
+
+```
+
 
 #### **Figure 2: Number of Requests for Correction (RFCs) and Reconsideration (RFRs) by agency (FY2003-FY2024)**
 ```{r message = FALSE, warning = FALSE, echo=FALSE, fig.dim = c(8,6)}
