@@ -2,7 +2,7 @@
 title: "Information Quality Act of 2000"
 subtitle: "Reporting of Agency Compliance Data (2003-2024)"
 author: "Office of Information and Regulatory Affairs, Office of Management and Budget <br>"
-date: "June, 2025"
+date: "July, 2025"
 date-format: "MMMM, YYYY"
 
 format: 
