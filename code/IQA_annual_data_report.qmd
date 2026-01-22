@@ -59,11 +59,7 @@ RFC_information_types<-read.csv(paste0(readpath,"RFC_INFORMATION_TYPES.csv"), ch
 
 ## **Background**
 
-##### Our Nation relies on the flow of timely, objective, and credible statistical and scientific information to inform the decisions of governments, businesses, organizations, and individuals. This information forms the basis on which evidence-based policymaking is done in the Federal government. Evidence collected by agencies guides the development of regulations and policies for achieving economic growth and job creation while protecting public health, safety, privacy, the environment, and the nation. Transparency and evaluation of the information used by Federal agencies to develop regulations and rulemaking is an integral part of the regulatory review process, including the benefits and costs of proposed policies.
-
-
-
-##### The Information Quality Act (IQA) of 2000 <a href="https://www.govinfo.gov/content/pkg/PLAW-106publ554/pdf/PLAW-106publ554.pdf" target="_blank">(Section 515 of Public Law 106–554; H.R. 5658)</a>  directed the Office of Management and Budget (OMB) to issue government-wide guidelines that provide policy and procedural guidance to Federal agencies for ensuring and maximizing the quality of information disseminated by Federal agencies, including a process for requesting correction. These guidelines and related initiatives are described below:
+##### Our Nation relies on the flow of timely, objective, and credible information to inform the decisions of governments, businesses, organizations, and individuals. The Information Quality Act (IQA) of 2000 <a href="https://www.govinfo.gov/content/pkg/PLAW-106publ554/pdf/PLAW-106publ554.pdf" target="_blank">(Section 515 of Public Law 106–554; H.R. 5658)</a>  directed the Office of Management and Budget (OMB) to issue government-wide guidelines that provide policy and procedural guidance to Federal agencies for ensuring and maximizing the quality of information disseminated by Federal agencies, including a process for requesting correction. These guidelines and related initiatives are described below:
 
 
 
@@ -84,17 +80,15 @@ The purpose of these FAQs is to answer questions that Federal agencies have ofte
 
 ##### Under these guidelines, all Federal agencies are required to provide an annual summary of status of: 1) requests for correction (RFCs) and requests for reconsideration (RFRs), and 2) peer reviews conducted consistent with the Bulletin.  More details regarding RFCs, RFRs, and peer reviews are contained below. 
 
-##### OMB summarizes and reports this information to Congress and the public. In previous years, reporting was done via the annual [Report to Congress on the Benefits and Costs of Federal Regulations and Unfunded Mandates](../docs/annual-reports/index.html){target="_blank"}. As an alternative, OIRA proposed in the  draft of the 2018/2019/2020 Report to disseminate this information through a publicly accessible website for improved transparency. In order to meet its obligations under the IQA and to support broader public dissemination of data, OMB is providing below a comprehensive summary of historical and contemporary data that the Office of Information and Regulatory Affairs (OIRA) has collected from Federal agencies over the last twenty years. Presented here are summaries of IQA data for fiscal year (FY) FY2003-FY2018 from the  Reports to Congress, as well as information from data collections beginning in FY2019. 
+##### OMB summarizes and reports this information to Congress and the public. In previous years, reporting was done via the annual [Report to Congress on the Benefits and Costs of Federal Regulations and Unfunded Mandates](../docs/annual-reports/index.html){target="_blank"}. Beginning in 2025, OIRA began disseminating this information through a publicly accessible website for improved transparency. In order to meet its obligations under the IQA and to support broader public dissemination of data, OMB is providing below a comprehensive summary of historical and contemporary data that the Office of Information and Regulatory Affairs (OIRA) has collected from Federal agencies over the last twenty years. Presented here are summaries of IQA data for fiscal year (FY) FY2003-FY2018 from the  Reports to Congress, as well as information from data collections beginning in FY2019. 
 
 
 
 ## **The Request for Correction Process**
 
-##### The ***Request for Correction (RFC)*** process is the administrative mechanism under the IQA allowing the public to seek and obtain correction of information maintained and disseminated by Federal agencies.  The submitted request itself is referred to as an RFC. This process also provides an opportunity to request reconsideration of the agency’s initial decision on an RFC.  This is referred to as a ***Request for Reconsideration (RFR)***. 
+##### The ***Request for Correction (RFC)*** process is the  mechanism under the IQA allowing the public to seek and obtain correction of information maintained and disseminated by Federal agencies.  The submitted request itself is referred to as an RFC. This process also provides an opportunity to request reconsideration of the agency’s initial decision on an RFC.  This is referred to as a ***Request for Reconsideration (RFR)***. 
 
-##### The RFC process is intended to provide a mechanism to correct errors or address whether the disseminated product does not meet OMB’s or the agency’s information quality guidelines. The process is not intended to duplicate or interfere with other agency processes that, through public participation, already allow individuals to raise questions about whether any information is incorrect or otherwise does not comply with OMB’s or the agency’s guidelines.  The process is designed to challenge technical information that underlies policy, not to debate the policy itself.
-
-##### Under the IQA, agencies are required to report periodically to OMB the number and nature of RFCs received by their agency, and how such requests were handled.  These reported data were previously included in the annual [Report to Congress on the Benefits and Costs of Federal Regulations and Unfunded Mandates](../docs/annual-reports/index.html){target="_blank"}.  Historical data of RFCs extracted from those reports, as well as data from a more recent data call, are presented here. 
+##### The RFC process is intended to provide a mechanism to correct errors or address whether the disseminated product does not meet OMB’s or the agency’s information quality guidelines. The process is not intended to duplicate or interfere with other agency processes that, through public participation, already allow individuals to raise questions about whether any information is incorrect or otherwise does not comply with OMB’s or the agency’s guidelines.  The process is designed to challenge technical information that underlies policy, not to debate the policy itself. Under the IQA, agencies are required to report periodically to OMB the number and nature of RFCs received by their agency, and how such requests were handled.  
 
 
 
@@ -483,7 +477,7 @@ tab6 |>
 
 ## **Bulletin for Peer Review**
 
-##### Peer review is one of the important procedures used to ensure that the quality of published information meets the standards of the scientific and technical community. It is a form of deliberation involving an exchange of professional judgments about the appropriateness of methods and the strength of the author’s inferences. Peer review involves the review of a draft product for quality by specialists in the field who were not involved in producing the draft. 
+##### Peer review is one of the important procedures used to ensure the quality of published information. It is a form of deliberation involving an exchange of professional judgments about the appropriateness of methods and the strength of the author’s inferences. Peer review involves the review of a draft product for quality by specialists in the field who were not involved in producing the draft. 
 
 ##### As per OMB’s [Peer Review Bulletin](../docs/guidelines/peer-review-bulletin-2005_m05-03.pdf){target="_blank"}, each agency shall provide to OMB a summary of the peer reviews conducted by the agency during the fiscal year. Peer reviews subject to the Bulletin are those of information classified as ***Influential Scientific Information (ISI)***, and the subset ***Highly Influential Scientific Assessments (HISA)***.  
 
