@@ -1,4 +1,4 @@
-"Agency","Trade Associations","Commercial Corporations","Interest Groups","Professional societies/associations","Others"
+"Agency","Trade Associations","Commercial Corporations","Interest Groups","Professional societies","Others"
 "Federal Reserve",0,1,0,0,1
 "GSA",0,0,0,0,0
 "EPA",1,2,0,0,2
@@ -14,3 +14,4 @@
 "DOI",0,0,0,0,0
 "SEC",0,0,0,0,0
 "DOD",0,0,0,0,0
+"DOT",0,0,0,0,0
