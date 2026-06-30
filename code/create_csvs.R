@@ -24,10 +24,17 @@ RFCs_resolutions<-read_excel("../bin/rfcs_resolutions_source.xlsx")
 pending_rfrs <- read_excel("../bin/pending_rfrs_source.xlsx")
 pending_rfcs <- read_excel("../bin/pending_rfcs_source.xlsx")
 
+#to do: 
+#re-code to use  RFCs_resolutions, pending_rfrs, and pending_rfcs for legacy (pre-FY2019) data only
+#and use rfc_resolutions_by_agency_source for all FY2019+ resolution data
+
+
+
+
 #all 3 data structures are same format (in terms of fiscal years, and column headings)
 
 #To count the total final resolutions of RFCs, the "pending" data category in all structures is ignored. 
-#Final resolutions that were extracted from reports to congress and 
+#Final resolutions that were extracted from reports to congress and data calls through FY18 data
 #input to rfcs_resolutions_source.xlsx (corrected, partial corrected, no correction) avoided double-counting by 
 #only considering the final resolution AFTER appeals.  
 #Anything "pending" from prior years is ultimately counted as either correction/final correction/no correction/other.  
@@ -39,7 +46,29 @@ RFC_resolution_totals<-RFCs_resolutions[, 2:5]+pending_rfcs[, 2:5]+pending_rfrs[
 
 #adding the FY list back as first column (all 3 files had the same format and FY list)
 RFC_resolution_df<-bind_cols(RFCs_resolutions[1], RFC_resolution_totals)
+
+#add data from rfc_resolution_by_agency_source.xlsx, which is all data collected using web-based instrument (FY19+)
+
+newFYs<-excel_sheets("../bin/rfc_resolution_by_agency_source.xlsx") #list of all FY tabs
+
+newdata<-c()
+for (x in newFYs){
+  print(x)
+  tempx<-read_excel("../bin/rfc_resolution_by_agency_source.xlsx",  sheet = x, cell_cols("B:E")) 
+  tempx[is.na(tempx)] <-0 #replace NA by 0
+  newdata<-bind_rows(newdata, colSums(tempx))#add the sum of RFC resolutions over all agencies for fiscal year x
+}
+
+xx<-bind_cols(Year=newFYs, newdata)#add column of the the fiscal year list (FY19+)
+RFC_resolution_df<-bind_rows(RFC_resolution_df, xx)#add the post-FY19 data to the df
+
+
 write.csv(RFC_resolution_df, file = paste0(outpath,"RFC_FINAL_RESOLUTION.csv"), row.names = FALSE)
+#resolutions .csv currently does not include "pending" category. 
+
+
+
+
 
 #Read RFC and RFR source files, and replace NA with zeros
 RFCs_by_agency <- read_excel("../bin/rfc_agencies_source.xlsx") 
